@@ -3,6 +3,7 @@
 
 # Django Project Setup
 
+
 ## Prerequisites
 
 Ensure you have the following installed:
@@ -43,18 +44,12 @@ Visit **http\://127.0.0.1:8000/** in your browser.
 ```bash
 python manage.py createsuperuser
 ```
+![admin urls](https://github.com/user-attachments/assets/7098ba3f-02eb-40ac-9c89-f1a9611ff68b)
 
-### Collect Static Files
+![admin urls](https://github.com/user-attachments/assets/2806c38d-e65b-446a-b02a-1ef16c8e8f7e)
+![enter mails](https://github.com/user-attachments/assets/16141162-fa04-40a7-8f23-b707b9373a27)
+![main](https://github.com/user-attachments/assets/6412c011-c7db-4fd2-84fa-c7a5db6601f3)
 
-```bash
-python manage.py collectstatic
-```
-
-### Running Tests
-
-```bash
-python manage.py test
-```
 
 ## License
 
