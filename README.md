@@ -67,6 +67,13 @@ Enter Loss person Details
 
 Wait some time and Check your mail 
 
+![Screenshot 2025-02-23 142115](https://github.com/user-attachments/assets/aa87b7b7-d96f-4e98-9c17-4a390d83cead)
+click For details
+![Screenshot 2025-02-23 142050](https://github.com/user-attachments/assets/36c86e11-ba5c-4a4f-87d6-db1b1fedf8de)
+See all details of Missing person
+
+![contact](https://github.com/user-attachments/assets/60ee89e8-e0a4-496c-a626-8d1e9d8f1a9d)
+Click to contact me With social media
 
 ## License
 
