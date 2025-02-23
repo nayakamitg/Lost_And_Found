@@ -1,0 +1,122 @@
+{% extends "Base.html" %}
+{% block title %}
+Add_Person
+{% endblock title %}
+
+{% block style %}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    margin-top: 12px;
+    font-weight: 600;
+    text-align: left;
+    color: #444;
+}
+input, select, textarea, button {
+    margin-top: 8px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: #2575fc;
+    outline: none;
+    box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
+}
+button[type="submit"] {
+    background: #2575fc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+button[type="submit"]:hover {
+    background: #1a5dc9;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(37, 117, 252, 0.4);
+}
+{% endblock style %}
+
+{% block body %}
+
+
+<div class="container my-5">
+    <h2>Missing Person Details</h2>
+    <form method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">Mobile Number:</label>
+        <input type="tel" id="phone" name="mobile">
+        
+        <label for="age">Age:</label>
+        <input type="number" step="any" id="age" name="age" required>
+        
+        <label for="gender">Gender:</label>
+        <input type="text" name="gender" placeholder="Male or Female or Other">
+        
+        <label for="height">Height (feet):</label>
+        <input type="number" id="height" name="height" required>
+        
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" required>
+        
+        <label for="last_seen">Last Seen Location:</label>
+        <input type="text" id="last_seen" name="last_seen">
+        
+        <label for="date_missing">Date Missing:</label>
+        <input type="date" id="date_missing" name="date_missing" required>
+        
+        <label for="contact">Contact Person Name:</label>
+        <input type="text" id="contact" name="contact" required>
+        
+        <label for="phone">Contact Number:</label>
+        <input type="tel" id="phone" name="phone">
+        
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" placeholder="Enter the address..." required></textarea>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" placeholder="Provide additional details..."></textarea>
+
+        <label for="photo">Upload Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required multiple>
+        
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock body %}

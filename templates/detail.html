@@ -1,0 +1,182 @@
+{% extends "Base.html" %}
+{% block title %}
+  Details Page
+{% endblock title %}
+
+{% block style %}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: blue;
+}
+
+.missing-person {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.person-image {
+  flex: 1;
+  padding: 10px;
+}
+
+.person-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+}
+
+.person-details {
+  flex: 2;
+  padding: 10px;
+}
+
+.person-details h2 {
+  font-size: 1.8em;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.person-details p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.person-details strong {
+  color: blue;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1em;
+  color: #777;
+}
+
+.Table_Details{
+  height:90%;
+  width:90%;
+}
+.Table_Details>tr{
+  padding:50px !important;
+}
+.Table_Details>tr>th{
+  width:150px !important;
+}
+td{
+  color:#2575fc;;
+}
+.photos_container{
+  min-height:100px;
+  width:100%;
+  background-color: white;
+}
+.photo_card{
+  display:flex;
+  flex-wrap:wrap;
+  border:1px solid black;
+  min-height:200px;
+  min-width:200px;
+  max-height:700px;
+  max-width:700px;
+  flex: 1 1 30%;;
+
+}
+{% endblock style %}
+
+{% block body %}
+<div class="container">
+  <header>
+      <h1>Missing Person Report</h1>
+  </header>
+  <section class="missing-person" style="display: flex; flex-wrap: wrap;">
+      <div class="person-image" style="width: 500px;">
+          <img src="/media/{{person.photos}}" alt="Missing Person" style="min-width: 200px;">
+      </div>
+      <div class="person-details">
+        <table style="width: 100%;">
+          <tr>
+            <th style="width: 35%;">Name:</th>
+            <td style="width: 100%;">{{person.name}}</td>
+          </tr>
+       
+          <tr>
+            <th>Age:</th>
+            <td>{{person.age}}</td>
+          </tr>
+          <tr>
+            <th>Gender:</th>
+            <td>{{person.gender}}</td>
+          </tr>
+          <tr>
+            <th>Height:</th>
+            <td>{{person.height}}</td>
+          </tr>
+          <tr>
+            <th>Weight:</th>
+            <td>{{person.weight}}</td>
+          </tr>
+          <tr>
+            <th>Mobile no.:</th>
+            <td>{{person.mobile}}</td>
+          </tr>
+         
+            <th>Last Seen Location:</th>
+            <td>{{person.last_seen_loc}}</td>
+          </tr>
+           <tr>
+            <th>Missing Date:</th>
+            <td>{{person.missing_date}}</td>
+          </tr>
+          <tr>
+          <tr>
+            <th>Contact person:</th>
+            <td>{{person.contact_person}}</td>
+          </tr>
+          <tr>
+            <th>Contact Person Number:</th>
+            <td>{{person.contact_person_number}}</td>
+          </tr>
+          <tr>
+            <th>Adddress:</th>
+            <td>{{person.address}}</td>
+          </tr>
+        
+          <tr>
+            <th>Descriptions:</th>
+            <td>{{person.desc}}</td>
+          </tr>
+        
+        </table>
+      </div>
+  </section>
+
+</div>
+
+{% endblock body %}

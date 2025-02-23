@@ -1,0 +1,179 @@
+{% extends "Base.html" %}
+{% block title %}
+  HOME | PAGE
+{% endblock title %}
+{% block style %}
+/* Resetting margin and padding for body */
+body {
+    {% comment %} #2575fc {% endcomment %}
+    min-height:100vh;
+  
+  margin: 0;
+  min-height: 100vh; 
+  box-sizing: border-box;
+}
+.main_container{
+    width:100vw;
+    min-height:65vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+/* Card styling */
+.card {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 25em;
+  max-width: 100%;  
+  margin: 1em;
+  text-align: center;
+  background-color:rgb(255, 255, 255);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+height:600px;
+  padding-bottom: 1em;
+  transition: all 0.3s ease;
+  border-radius: 12px;  
+  overflow: hidden; 
+  aspact-ratio:1/5;
+}
+.card:hover{
+  transform:scale(1.01);
+}
+/* Image inside the card */
+.card img {
+    width:100%;
+  min-height:280px;
+
+
+  aspact-ratio:16/9;
+  clip-path: polygon(0 0, 0 100%, 100% 85%, 100% 0%); 
+  border-bottom: 2px solid rgb(255, 255, 255);
+}
+/* Description section inside the card */
+.description {
+  background-color:white;  
+  width: 98%;  
+  margin: 1em auto; 
+  padding: 1em;  
+  border-radius: 12px;  
+  text-align: center; 
+}
+/* Styling for the title */
+.description h2 {
+  font-size: 2em;
+  color:#2575fc;
+  margin-bottom: 0.5em;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+/* Table Styling */
+table {
+  width: 100%;
+  overflow: hidden;
+  border-collapse: collapse;  
+  margin: 0 auto;  
+  border-radius: 8px;
+  border:"1px solid"  
+}
+th, td {
+  padding: 10px; 
+  text-align: left;  
+  font-size: 1em;  
+}
+th,td {
+  background-color:white; 
+  color: black;  
+  font-weight: bold;
+}
+th{
+    width:28%;
+    color:#2575fc;
+    
+}
+
+
+/* Button styling */
+button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  color: #fff;
+  background-color:rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 6px;
+}
+/* Styling for the second card */
+.card{
+  background-color:white;
+  color: #fff !important;
+}
+.card button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  color:rgb(255, 255, 255);
+  background-color: #fff;
+  border: 1px solid #836953;
+}
+
+a{
+  text-decoration: none;
+}
+h4{
+  color:grey;
+}
+
+{% endblock style %}
+{% block body %}
+
+<div class="main_container">
+ 
+
+
+{% if AllPerson %}
+{% for n in AllPerson %}
+
+<a href="{% url 'Details' n.sno %}">
+  <div class="card">
+    <img src="/media/{{n.photos}}" alt="">
+    <div class="description">
+      <h2>{{n.name}}</h2>
+      <table>
+     
+        <tr>
+          <th>Age</th>
+          <td>{{n.age}}</td>
+        </tr>
+        <tr>
+          <th>Mobile no.</th>
+          <td>{{n.mobile}}</td>
+        </tr>
+        <tr>
+          <th>Adddress</th>
+          <td>{{n.address}}</td>
+        </tr>
+        <tr>
+          <th>Gender</th>
+          <td>{{n.gender}}</td>
+        </tr>
+      
+      </table>
+    </div>
+  </div>
+</a>
+  {% endfor %}
+  {% else %}
+  <div style="text-align: center;">
+  <h1 class="pt-5">No Missing Person</h1>
+  <h4>Please Add Person</h4>
+  </div>
+  {% endif %}
+
+ </div>
+  
+
+  {% endblock body %}
+
+  {% block scripts %}
+
+
+  {% endblock scripts %}
