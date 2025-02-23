@@ -58,9 +58,11 @@ go to home page
 http\://127.0.0.1:8000
 ![main](https://github.com/user-attachments/assets/6412c011-c7db-4fd2-84fa-c7a5db6601f3)
 
-![main](https://github.com/user-attachments/assets/5e19b62a-775e-47af-90b6-311eba953992)
+![Screenshot 2025-02-23 125145](https://github.com/user-attachments/assets/7d1e48e3-2099-4da7-ad86-41fc3d53ea6e)
+Enter Loss person Details
 
 ![add person](https://github.com/user-attachments/assets/afa0bded-7360-40d0-8b63-4ac18c2671be)
+
 ![submit](https://github.com/user-attachments/assets/c78e2cc1-0224-40e9-88f3-4f0c72eab172)
 
 Wait some time and Check your mail 
