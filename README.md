@@ -65,7 +65,9 @@ Enter Loss person Details
 
 ![submit](https://github.com/user-attachments/assets/c78e2cc1-0224-40e9-88f3-4f0c72eab172)
 
-Wait some time and Check your mail 
+### Wait some time and Check your mail
+### If mail not available then refersh again and again
+### And also check SPAM section
 
 ![Screenshot 2025-02-23 142115](https://github.com/user-attachments/assets/aa87b7b7-d96f-4e98-9c17-4a390d83cead)
 click For details
