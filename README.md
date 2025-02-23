@@ -19,8 +19,8 @@ Ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository_url>
-cd <project_name>
+git clone https://github.com/nayakamitg/Lost_And_Found.git
+cd Lost_And_Found
 ```
 
 ### 2. Apply Migrations
