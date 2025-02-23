@@ -51,8 +51,11 @@ python manage.py createsuperuser
 ![add button](https://github.com/user-attachments/assets/81a6d32b-cb7a-4961-b071-33dadc496ada)
 
 ![enter mails](https://github.com/user-attachments/assets/16141162-fa04-40a7-8f23-b707b9373a27)
+enter police station location and police station mail
+for example enter your mail
 
-
+go to home page
+http\://127.0.0.1:8000
 ![main](https://github.com/user-attachments/assets/6412c011-c7db-4fd2-84fa-c7a5db6601f3)
 
 ![main](https://github.com/user-attachments/assets/5e19b62a-775e-47af-90b6-311eba953992)
