@@ -75,11 +75,7 @@ See all details of Missing person
 ![contact](https://github.com/user-attachments/assets/60ee89e8-e0a4-496c-a626-8d1e9d8f1a9d)
 Click to contact me With social media
 
-## License
 
-This project is licensed under the MIT License.
 
----
-
-Enjoy coding! 🚀
+# Enjoy coding! 🚀
 
