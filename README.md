@@ -44,6 +44,11 @@ Visit **http\://127.0.0.1:8000/** in your browser.
 ```bash
 python manage.py createsuperuser
 ```
+### Superuser user and pass
+## user: Amit
+## pass: Amit
+
+
 
 ### Screenshots
 ![admin urls](https://github.com/user-attachments/assets/2806c38d-e65b-446a-b02a-1ef16c8e8f7e)
