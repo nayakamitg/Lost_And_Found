@@ -1,0 +1,219 @@
+{% extends "Base.html" %} {% block title %} CREATE MISSING PERSON | LOST AND
+FOUND {% endblock title %}
+<!-- style -->
+{% block style %}
+<style>
+  .create_missing .missing-form {
+    border: 1px solid #ccc;
+    padding: 30px;
+    border-radius: 5px;
+  }
+  .create_missing h2 {
+    color: #333;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 10px auto 30px;
+    width: fit-content;
+  }
+  .create_missing form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 20px;
+  }
+
+  .create_missing form .form-group {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .create_missing form label {
+    font-weight: 600;
+    text-align: left;
+    color: #253042;
+    font-size: 14px;
+  }
+  .create_missing form input,
+  .create_missing form select,
+  .create_missing form textarea,
+  .create_missing form button {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.3s;
+  }
+  .create_missing form textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  .create_missing form input:focus,
+  .create_missing form select:focus,
+  .create_missing form textarea:focus {
+    border-color: #00a6ff;
+    outline: none;
+    box-shadow: none;
+  }
+  .create_missing .form-group-btn {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .create_missing form .btn {
+    width: 150px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  .create_missing form .btn-primary {
+    background: #00a6ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .create_missing form .btn-primary:hover {
+    background: #0182c8;
+  }
+
+  @media screen and (max-width: 767px) {
+    .create_missing form .form-group {
+      width: 100%;
+    }
+    .create_missing form .form-group-btn {
+      justify-content: center;
+    }
+    .create_missing .missing-form{
+        padding: 15px;
+    }
+    .create_missing h2{
+        font-size: 24px;
+    }
+    
+  }
+
+</style>
+{% endblock style %} {% block body %}
+
+<section class="create_missing">
+  <div class="container my-5">
+    <div class="missing-form">
+      <h2>Missing Person Details</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" value="{{person.name}}" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Mobile Number:</label>
+          <input type="tel" id="phone" value="{{person.mobile}}" name="mobile" />
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" step="any" value="{{person.age}}" id="age" name="age" required />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select name="gender" id="gender">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male" {% if person.gender == 'Male' %} selected {% endif %} >Male</option>
+            <option value="Female" {% if person.gender == 'Female' %} selected {% endif %}>Female</option>
+            <option value="Other" {% if person.gender == 'Other' %} selected {% endif %}>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="height">Height (feet):</label>
+          <input type="number" id="height" value="{{person.height}}" name="height" required />
+        </div>
+        <div class="form-group">
+          <label for="weight">Weight (kg):</label>
+          <input type="number" id="weight" value="{{person.weight}}" name="weight" required />
+        </div>
+        <div class="form-group">
+          <label for="last_seen">Last Seen Location:</label>
+          <input type="text" id="last_seen" value="{{person.last_seen_loc}}" name="last_seen" />
+        </div>
+        <div class="form-group">
+          <label for="date_missing">Date Missing:</label>
+          <input type="date" id="date_missing" value="{{person.missing_date|date:'Y-m-d'}}" name="date_missing" required />
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact Person Name:</label>
+          <input type="text" id="contact" value="{{person.contact_person}}" name="contact" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Contact Number:</label>
+          <input type="tel" id="phone" value="{{person.contact_person_number}}" name="phone" />
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea
+            id="address"
+            name="address" 
+            placeholder="Enter the address..."
+            required
+          >{{person.address}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Provide additional details..."
+          > {{person.desc}} </textarea>
+        </div>
+        <div class="form-group">
+            <label for="photo">Upload Photo:</label>
+            
+            <!-- Display existing photo if it exists -->
+            {% if person.photos %}
+            <div id="photo-preview" style="margin-bottom: 10px;">
+                <img src="{{ person.photos.url }}" alt="Current photo" style="max-height: 50px;">
+            </div>
+            {% endif %}
+            
+            <!-- File input -->
+            <input
+              type="file"
+              id="photo"
+              name="photo"
+              accept="image/*"
+              {% if not person.photos %}required{% endif %}
+              multiple
+            />
+            
+            <!-- Hidden input to track if existing photo should be kept -->
+            {% if person.photo %}
+              <input type="hidden" id="keep-photo" name="keep_photo" value="1">
+            {% endif %}
+          </div>
+        {% if person.f_status %}
+        <div class="form-group">
+          <label for="fstatus">Found Status:</label>
+          <select name="fstatus" id="fstatus">
+            <option value="" disabled selected>Select Status</option>
+            <option value="Found" {% if person.f_status == 'Found' %} selected {% endif %} >Found</option>
+            <option value="Not Found" {% if person.f_status == 'Not Found' %} selected {% endif %}>Not Found</option>
+          </select>
+        </div>
+        {% endif %}
+        <div class="form-group-btn">
+          <button
+            class="btn btn-outline-secondary"
+            onclick="window.history.back()"
+          >
+            Back
+          </button>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock body %}

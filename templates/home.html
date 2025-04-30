@@ -1,0 +1,234 @@
+{% extends "Base.html" %}
+<!-- title -->
+{% block title %} HOME | LOST AND FOUND {% endblock title %}
+<!-- block  -->
+{% block style %}
+<style>
+  .missing_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .missing_list h1{
+    color: #253042;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 10px auto 30px;
+    width: fit-content;
+  }
+  .missing_list h1::after{
+    content: "";
+    display: flex;
+    width: 100%;
+    height: 3px;
+    background-color: #00a6ff;
+  }
+  .main_container {
+    width: 90%;
+    min-height: 65vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  /* Card styling */
+  .card {
+    max-width: 330px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    height: 400px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card .image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Description section inside the card */
+  .description {
+    background-color: #253042c9;
+    width: 100%;
+    height: 40%;
+    margin: 0;
+    padding: 1em;
+    position: absolute;
+    bottom: -100%;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .description {
+    bottom: 0%;
+  }
+
+  .description a {
+    text-decoration: none;
+    color: #ffffff;
+    width: fit-content;
+    display: flex;
+  }
+
+  .description a:hover h2 {
+    color: #00aaff;
+  }
+  /* Styling for the title */
+  .description h2 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    width: fit-content;
+  }
+
+  .description .info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .description .info .info-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .description .info .info-flex .info-col {
+    display: flex;
+    width: 50%;
+    gap: 10px;
+  }
+  .description .info span {
+    color: #ffffff;
+  }
+
+  .description .info span:first-child {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .description button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 6px 25px;
+    border: none;
+    background: #00aaff;
+    color: #253042;
+    border-top-left-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .description button:hover {
+    background: #253042;
+    color: #00aaff;
+    transition: all 0.3s ease;
+  }
+</style>
+{% endblock style %} {% block body %}
+
+<section class="missing_list">
+  <div class="title">
+    <h1>Missing Person List</h1>
+  </div>
+  <div class="main_container">
+    {% if AllPerson %} {% for n in AllPerson %}
+    {% if n.f_status == 'Not Found' %}
+    <div class="card">
+      <div class="image">
+        <img src="/media/{{n.photos}}" alt="" />
+      </div>
+      <div class="description">
+        <a href="{% url 'Details' n.sno %}">
+          <h2>{{n.name}}</h2>
+        </a>
+        <div class="info">
+          <div class="info-flex">
+            <div class="info-col">
+              <span>Age:</span>
+              <span>{{n.age}}</span>
+            </div>
+            <div class="info-col">
+              <span>Gender:</span>
+              <span>{{n.gender}}</span>
+            </div>
+          </div>
+          <div>
+            <span>Contact:</span>
+            <span>{{n.mobile}}</span>
+          </div>
+          <div>
+            <span>Adddress:</span>
+            <span>{{n.address}}</span>
+          </div>
+        </div>
+        <button><a href="{% url 'Details' n.sno %}">Details</a></button>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %} {% else %}
+    <div style="text-align: center">
+      <h1 class="pt-5">No Missing Person</h1>
+      <h4>Please Add Person</h4>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="missing_list">
+  <div class="title">
+    <h1>Found Person List</h1>
+  </div>
+  <div class="main_container">
+    {% if AllPerson %} {% for n in AllPerson %}
+    {% if n.f_status == 'Found' %}
+    <div class="card">
+      <div class="image">
+        <img src="/media/{{n.photos}}" alt="" />
+      </div>
+      <div class="description">
+        <a href="{% url 'Details' n.sno %}">
+          <h2>{{n.name}}</h2>
+        </a>
+        <div class="info">
+          <div class="info-flex">
+            <div class="info-col">
+              <span>Age:</span>
+              <span>{{n.age}}</span>
+            </div>
+            <div class="info-col">
+              <span>Gender:</span>
+              <span>{{n.gender}}</span>
+            </div>
+          </div>
+          <div>
+            <span>Contact:</span>
+            <span>{{n.mobile}}</span>
+          </div>
+          <div>
+            <span>Adddress:</span>
+            <span>{{n.address}}</span>
+          </div>
+        </div>
+        <button><a href="{% url 'Details' n.sno %}">Details</a></button>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %} {% else %}
+    <div style="text-align: center">
+      <h1 class="pt-5">No Missing Person</h1>
+      <h4>Please Add Person</h4>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock body %} {% block scripts %} {% endblock scripts %}
